@@ -1,17 +1,25 @@
 // create promt with text
-var userChoice = prompt('Choose to write rock, paper or scissors');
+var userChoice = prompt('Write "rock", "paper" or "scissors"');
+var refreshButton = document.getElementById('refresh')
+refreshButton.addEventListener('click', refreshPage)
+function refreshPage() {
+    document.location.reload(true);
+}
 
 // failure handler
 if(! userChoice ) {
-    alert('You must choose to write either rock, paper or scissors')
+    alert('You cannot quit now!')
     // make sure to return client to prompt automatically
     document.location.reload(true)
-
 }
-else {
-    document.write("You've chosen = " + " " + userChoice + "<br>")
-}
+else if ( userChoice == 'rock' || userChoice == 'paper' || userChoice == 'scissors') {
+        document.write("<br>" + "You've chosen = " + " " + userChoice + "<br>")
+    }
 
+    else {
+        alert('you must type in either "rock", "paper" or "scissors"')
+        document.location.reload(true);
+    }
 // creating computer choice
 var computerChoice = Math.random()
 if (computerChoice < 0.34) {
@@ -31,7 +39,7 @@ document.write("The computer has chosen = " + " " + computerChoice + " ")
 
 var compare = function(choice1, choice2) {
     if(choice1 === choice2) {
-    return "It is a tie!";
+    return "It's a tie!";
 
     }
     if (choice1 === "rock") {
@@ -66,4 +74,4 @@ var compare = function(choice1, choice2) {
 // type out the result
 var result = compare(userChoice,computerChoice)
 
-document.write( "<br>" + "The result of the match is = " + result)
+document.write( "<br><br>" + result)
